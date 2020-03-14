@@ -19,12 +19,8 @@ $OpenVPNStatus = new OpenVPNStatus();
 $OpenVPNStatus->setUnixSocket($config['status']['socket']);
 $new = $OpenVPNStatus->parse();
 
-$i = 0;
-foreach ($new as $clients) {
-  $i++;
-  $connected_since = date($config['connected_since_date_format'], $clients['connected_since']);
-  echo "<tr><th scope=\"row\">{$i}</th><td>{$clients['name']}</td><td>{$clients['real_ip']}</td><td>{$clients['virtual_ip']}</td><td>{$clients['bytes_received']}</td><td>{$clients['bytes_sent']}</td><td>{$connected_since}</td><tr>";
-}
+foreach ($new as $clients)
+  echo '<tr><th scope="row">' . ($key + 1) . '</th><td>' . $clients['name'] . '</td><td>' . $clients['real_ip'] . '</td><td>' . $clients['virtual_ip'] . '</td><td>' . ($clients['bytes_received'] / 1024) . '</td><td>' . ($clients['bytes_sent'] / 1024) . '</td><td>' . date($config['connected_since_date_format'], $clients['connected_since']) . '</td><tr>';
 
 ?>
 
