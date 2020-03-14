@@ -20,7 +20,7 @@ $OpenVPNStatus->setUnixSocket($config['status']['socket']);
 $new = $OpenVPNStatus->parse();
 
 foreach ($new as $clients)
-  echo '<tr><th scope="row">' . ($key + 1) . '</th><td>' . $clients['name'] . '</td><td>' . $clients['real_ip'] . '</td><td>' . $clients['virtual_ip'] . '</td><td>' . ($clients['bytes_received'] / 1024) . '</td><td>' . ($clients['bytes_sent'] / 1024) . '</td><td>' . date($config['connected_since_date_format'], $clients['connected_since']) . '</td><tr>';
+  echo '<tr><th scope="row">' . ($key + 1) . '</th><td>' . $clients['name'] . '</td><td>' . $clients['real_ip'] . '</td><td>' . $clients['virtual_ip'] . '</td><td>' . round($clients['bytes_received'] / 1024, 2) . '</td><td>' . round($clients['bytes_sent'] / 1024, 2) . '</td><td>' . date($config['connected_since_date_format'], $clients['connected_since']) . '</td><tr>';
 
 ?>
 
