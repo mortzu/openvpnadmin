@@ -25,7 +25,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
 <?php
 
 foreach ($OpenVPNAuth->getUsers() as $key => $user)
-  echo '<tr><th scope="row">' . ($key + 1) . '</th><td>' . $user . '</td></tr>';
+  echo '<tr><th scope="row">' . ($key + 1) . '</th><td>' . $user . '</td><td><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></td></tr>';
 
 ?>
 </tbody>
