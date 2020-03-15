@@ -6,8 +6,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
 <?php
-foreach ($config['nav'] as $nav) {
-  echo '<li class="nav-item"><a class="nav-link" href="' . $nav['target'] . '">' . $nav['name'] . '</a></li>';
+if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] == true)) {
+  foreach ($config['nav'] as $nav) {
+    echo '<li class="nav-item"><a class="nav-link" href="' . $nav['target'] . '">' . $nav['name'] . '</a></li>';
+  }
 }
 ?>
       </ul>
