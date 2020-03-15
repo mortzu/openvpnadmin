@@ -7,6 +7,8 @@ require_once $script_directory . '/config.php';
 require_once $script_directory . '/class/OpenVPNAuth.php';
 require_once $script_directory . '/class/OpenVPNStatus.php';
 
+session_start();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,10 +30,14 @@ require_once $script_directory . '/class/OpenVPNStatus.php';
 
 <?php
 
-if (!isset($_GET['page']) || $_GET['page'] == '')
-  require_once $script_directory . '/parts/connected_clients.php';
-elseif ($_GET['page'] == 'clients')
-  require_once $script_directory . '/parts/clients.php';
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] !== true)) {
+  if (!isset($_GET['page']) || $_GET['page'] == '')
+    require_once $script_directory . '/parts/connected_clients.php';
+  elseif ($_GET['page'] == 'clients')
+    require_once $script_directory . '/parts/clients.php';
+} else {
+  require_once $script_directory . '/parts/login.php';
+}
 
 ?>
 </div>
